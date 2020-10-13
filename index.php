@@ -21,6 +21,10 @@
 
             <input type="text" data-cp="cvv" class="form-control mt-1 col-6" placeholder="СММ">
             <input type="text" data-cp="name" class="form-control mt-1 col-6" id="name" placeholder="ФИО">
+            <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Запомнить</label>
+  </div>
             <a onclick="createCryptogram()" class="btn btn-primary mt-1">Оплатить 100 р.</a>
         </form>
         <form name="downloadForm" action="AcsUrl" method="POST" class="d-none">
