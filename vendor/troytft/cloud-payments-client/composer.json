@@ -1,0 +1,15 @@
+{
+    "name" : "troytft/cloud-payments-client",
+    "description": "Client for CloudPayments.ru",
+    "version" : "0.1.0",
+    "type" : "library",
+    "license" : "MIT",
+    "require" : {
+        "php": ">=5.5"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "CloudPayments\\" : "src/"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+[
+    {
+        "name": "troytft/cloud-payments-client",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Troytft/cloud-payments-client.git",
+            "reference": "5e45ee22ab5936adc3ef079fc1a77a8a0a150017"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Troytft/cloud-payments-client/zipball/5e45ee22ab5936adc3ef079fc1a77a8a0a150017",
+            "reference": "5e45ee22ab5936adc3ef079fc1a77a8a0a150017",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5"
+        },
+        "time": "2018-12-28T12:03:24+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "CloudPayments\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Client for CloudPayments.ru"
+    }
+]

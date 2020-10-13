@@ -1,0 +1,5 @@
+{
+    "require": {
+        "troytft/cloud-payments-client": "^0.1.0"
+    }
+}

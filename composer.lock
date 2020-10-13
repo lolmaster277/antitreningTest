@@ -1,0 +1,49 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "226c9850da1380e051a0968642ad17ae",
+    "packages": [
+        {
+            "name": "troytft/cloud-payments-client",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Troytft/cloud-payments-client.git",
+                "reference": "5e45ee22ab5936adc3ef079fc1a77a8a0a150017"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Troytft/cloud-payments-client/zipball/5e45ee22ab5936adc3ef079fc1a77a8a0a150017",
+                "reference": "5e45ee22ab5936adc3ef079fc1a77a8a0a150017",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CloudPayments\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Client for CloudPayments.ru",
+            "time": "2018-12-28T12:03:24+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
+}
