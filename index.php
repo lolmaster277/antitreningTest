@@ -13,7 +13,7 @@
 <body>
     <div class="container mt-5">
         <form id="paymentFormSample" class="form-group">
-            <input type="text" data-cp="cardNumber" class="form-control mt-1 col-6" placeholder="Номер карты">
+            <input type="text" data-cp="cardNumber" class="form-control mt-1 col-6" placeholder="Номер карты" id="cardNumber">
             <div class="form-row p-auto m-auto mt-1">
                 <input type="text" data-cp="expDateMonth" class="form-control col-3" placeholder="Месяц">
                 <input type="text" data-cp="expDateYear" class="form-control col-3" placeholder="Год">
@@ -22,9 +22,9 @@
             <input type="text" data-cp="cvv" class="form-control mt-1 col-6" placeholder="СММ">
             <input type="text" data-cp="name" class="form-control mt-1 col-6" id="name" placeholder="ФИО">
             <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Запомнить</label>
-  </div>
+                <input type="checkbox" class="form-check-input" id="saveCard">
+                <label class="form-check-label" for="saveCard">Запомнить</label>
+            </div>
             <a onclick="createCryptogram()" class="btn btn-primary mt-1">Оплатить 100 р.</a>
         </form>
         <form name="downloadForm" action="AcsUrl" method="POST" class="d-none">
@@ -35,34 +35,60 @@
     </div>
 
     <script>
-        function createCryptogram() {
-            var result = checkout.createCryptogramPacket();
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
 
+
+        function createCryptogram() {
+       
+            if ($('#saveCard:checked')==true) {
+           
+                document.cookie = "card=" + $('#cardNumber').val();
+            }else{
+           
+                document.cookie ="card=;expires=Thu; 01 Jan 1970";
+            }
+            var result = checkout.createCryptogramPacket();
+            $("#cardNumber").val(getCookie('card'));
             if (result.success) {
                 // сформирована криптограмма
                 alert(result.packet);
                 $.ajax({
                     url: './chekout.php',
-                    dataType :'json',
+                    dataType: 'json',
                     type: "POST",
                     data: {
-                        name:$("#name").attr('data-cp'),
-                        CardCryptogramPacket:result.packet,
+                        name: $("#name").attr('data-cp'),
+                        CardCryptogramPacket: result.packet,
                     },
-                    success: function(data){
-                        if(data.status==0||data.status==1){
+                    success: function(data) {
+                        
+                        if (data.status == 0 || data.status == 1) {
                             alert(data.message);
-                        }else{
+                        } else {
                             alert("вы будете переотправлены на сайт банка");
-                            PaReq.value=data.token;
-                            MD.value=data.id;
-                            downloadForm.action=data.url;
-                            
+                            PaReq.value = data.token;
+                            MD.value = data.id;
+                            downloadForm.action = data.url;
+
                             downloadForm.submit();
                         }
                         console.log(data);
                     },
-                    
+
                 });
             } else {
                 // найдены ошибки в введённых данных, объект `result.messages` формата: 
@@ -82,6 +108,7 @@
                 // тег, содержащий поля данных карты
                 document.getElementById("paymentFormSample"));
         });
+        $("#cardNumber").val(getCookie('card'));
     </script>
 </body>
 
